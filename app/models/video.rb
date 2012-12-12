@@ -18,13 +18,13 @@ class Video
 
   def self.search(params, match = nil)
     query = yt_session.videos_by(params)
+    puts match.team_a + " " + match.team_b
     query.videos.each do |video|
       v = save_video(video)
 
       if match
         match.videos << v
         match.save
-        puts match.team_a + " " + match.team_b
       end
 
       video.thumbnails.each do |thumbnail|
