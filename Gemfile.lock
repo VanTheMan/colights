@@ -65,6 +65,8 @@ GEM
       warden (~> 1.2.1)
     domain_name (0.5.6)
       unf (~> 0.0.3)
+    dragonfly (0.9.12)
+      rack
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -215,6 +217,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   devise
+  dragonfly (~> 0.9.12)
   jquery-rails
   kaminari
   mechanize
@@ -223,6 +226,7 @@ DEPENDENCIES
   mongoid_fulltext
   nokogiri
   pry
+  rack-cache
   rails (= 3.2.9)
   rails_best_practices
   sass-rails (~> 3.2.3)

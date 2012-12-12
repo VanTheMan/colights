@@ -13,8 +13,8 @@ gem 'attribute_normalizer'
 gem 'nokogiri'
 gem 'mechanize'
 
-gem 'kaminari'
-gem 'whenever'
+gem 'kaminari'          # pagination
+gem 'whenever'          # cron jobs
 
 gem 'youtube_it'
 
