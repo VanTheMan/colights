@@ -63,8 +63,6 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    domain_name (0.5.6)
-      unf (~> 0.0.3)
     dragonfly (0.9.12)
       rack
     erubis (2.7.0)
@@ -91,14 +89,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mechanize (2.5.1)
-      domain_name (~> 0.5, >= 0.5.1)
-      mime-types (~> 1.17, >= 1.17.2)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
-      net-http-persistent (~> 2.5, >= 2.5.2)
-      nokogiri (~> 1.4)
-      ntlm-http (~> 0.1, >= 0.1.1)
-      webrobots (~> 0.0, >= 0.0.9)
     method_source (0.8.1)
     mime-types (1.19)
     mongo (1.8.0)
@@ -115,10 +105,7 @@ GEM
       unicode_utils (~> 1.0.0)
     multi_json (1.5.0)
     multipart-post (1.1.5)
-    net-http-digest_auth (1.2.1)
-    net-http-persistent (2.8)
     nokogiri (1.5.5)
-    ntlm-http (0.1.1)
     oauth (0.4.7)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -190,13 +177,9 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unf (0.0.5)
-      unf_ext
-    unf_ext (0.0.5)
     unicode_utils (1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
-    webrobots (0.0.13)
     whenever (0.8.0)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
@@ -219,13 +202,12 @@ DEPENDENCIES
   compass-rails
   devise
   dragonfly (~> 0.9.12)
+  faraday
   jquery-rails
   kaminari
-  mechanize
   mongoid (~> 2.4)
   mongoid-cached-json
   mongoid_fulltext
-  nokogiri
   pry
   rack-cache
   rails (= 3.2.9)

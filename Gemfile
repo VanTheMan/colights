@@ -10,14 +10,13 @@ gem 'bson_ext'
 gem 'attribute_normalizer'
 
 # craw
-gem 'nokogiri'
-gem 'mechanize'
+gem 'faraday'
 
 gem 'kaminari'          # pagination
-gem 'whenever'          # cron jobs\
+gem 'whenever'          # cron jobs
 gem 'settingslogic'
 
-gem 'youtube_it'
+gem 'youtube_it'        # youtube gem
 
 gem 'devise'            # authentication
 

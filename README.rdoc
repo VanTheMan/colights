@@ -38,3 +38,5 @@
     + fields:
       = email
       = password
+
+  - MatchCrawler

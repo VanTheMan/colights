@@ -20,7 +20,6 @@ class Video
     query.videos.each do |video|
       v = save_video(video)
       video.thumbnails.each do |thumbnail|
-        # binding.pry
         t = Thumbnail.save_thumbnail(thumbnail)
         v.thumbnails << t
         v.save
