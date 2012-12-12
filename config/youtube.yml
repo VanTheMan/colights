@@ -1,0 +1,24 @@
+development:
+  dev_key: AI39si6mnLTguiPULbZoF7HnqHIyChrhd0iAGnKFY0ggrO_qvfKMG6I9LWScy4fthNVe48n3tvqJMzz09qBU9QHN36r02O06aA
+  client_id: 261847884438.apps.googleusercontent.com
+  client_secret: pV4BHrWt6A4ylIKL6GHcZ-Qw
+  username: toannm3110@gmail.com
+  password: manhtoan
+test:
+  dev_key: AI39si6mnLTguiPULbZoF7HnqHIyChrhd0iAGnKFY0ggrO_qvfKMG6I9LWScy4fthNVe48n3tvqJMzz09qBU9QHN36r02O06aA
+  client_id: 261847884438.apps.googleusercontent.com
+  client_secret: pV4BHrWt6A4ylIKL6GHcZ-Qw
+  username: toannm3110@gmail.com
+  password: manhtoan
+staging:
+  dev_key: AI39si6mnLTguiPULbZoF7HnqHIyChrhd0iAGnKFY0ggrO_qvfKMG6I9LWScy4fthNVe48n3tvqJMzz09qBU9QHN36r02O06aA
+  client_id: 261847884438.apps.googleusercontent.com
+  client_secret: pV4BHrWt6A4ylIKL6GHcZ-Qw
+  username: toannm3110@gmail.com
+  password: manhtoan
+production:
+  dev_key: AI39si6mnLTguiPULbZoF7HnqHIyChrhd0iAGnKFY0ggrO_qvfKMG6I9LWScy4fthNVe48n3tvqJMzz09qBU9QHN36r02O06aA
+  client_id: 261847884438.apps.googleusercontent.com
+  client_secret: pV4BHrWt6A4ylIKL6GHcZ-Qw
+  username: toannm3110@gmail.com
+  password: manhtoan
