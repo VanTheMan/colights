@@ -1,0 +1,15 @@
+# config/application.yml
+defaults: &defaults
+  host: localhost:3000
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
