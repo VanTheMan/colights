@@ -20,6 +20,10 @@ gem 'youtube_it'
 
 gem 'devise'            # authentication
 
+# Gems used for upload images
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.12'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

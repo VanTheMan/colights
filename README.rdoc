@@ -12,6 +12,7 @@
       = unique_id
       = description
       = uploaded_at
+      = view_count
     + relationships:
       = belongs_to: match
 
