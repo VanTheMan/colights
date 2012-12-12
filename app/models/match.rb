@@ -8,4 +8,8 @@ class Match
   field :tag, type: Array
 
   has_many :videos
+
+  def self.save_match
+
+  end
 end

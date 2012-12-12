@@ -1,8 +1,8 @@
 class MatchCrawler
-  def request_param(page)
+   def request_param(page)
     path = '/a/block_competition_matches?'
     callback_params = {
-      page: page.to_s,
+      page: (page==0 ? 0 : page.to_s),
       round_id: 17950.to_s,
       outgroup: "",
       view: 2
@@ -11,7 +11,7 @@ class MatchCrawler
       block_id: "page_competition_1_block_competition_matches_7",
       callback_params: callback_params.to_json,
       action: "changePage",
-      params: { page: (page+1).to_s }.to_json
+      params: { page: (page+1==0 ? 0 : (page+1).to_s) }.to_json
     }
 
     path + params.to_query
@@ -20,28 +20,26 @@ class MatchCrawler
   def crawl(page = -4)
     conn = Faraday.new(url: 'http://www.soccerway.com/') do |c|
       c.use Faraday::Request::UrlEncoded
-      c.use Faraday::Response::Logger
       c.use Faraday::Adapter::NetHttp
     end
 
-    response = conn.get request_param(page)
-    json = JSON.parse response.body
-
     result = {}
 
-    for i in -4..0 do
+    for i in page..0 do
+      response = conn.get request_param(i)
+      json = JSON.parse response.body
       html = Nokogiri.HTML json["commands"][0]["parameters"]["content"]
       result["page_#{i}"] = process_html(html)
     end
 
-    result
+    return
   end
 
   def process_html(html)
     results = []
     html.css('table.matches > tbody > tr').each do |tr|
       timestamp = tr['data-timestamp'].to_i
-      break if (timestamp > Time.now.to_i)
+      next if (timestamp > Time.now.to_i)
 
       time = Time.at timestamp
       team_a = tr.css('td.team-a > a').first[:title]
@@ -53,6 +51,8 @@ class MatchCrawler
         team_b: team_b,
         score: score
       }
+
+      puts "Crawled match: #{time} | #{team_a} #{score} #{team_b}"
       results << match
     end
     results
