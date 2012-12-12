@@ -13,7 +13,8 @@ gem 'attribute_normalizer'
 gem 'faraday'
 
 gem 'kaminari'          # pagination
-gem 'whenever'          # cron jobs
+ # cron jobs
+gem 'whenever', :require => false
 gem 'settingslogic'
 
 gem 'youtube_it'        # youtube gem
