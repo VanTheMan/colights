@@ -15,6 +15,14 @@
       = view_count
     + relationships:
       = belongs_to: match
+      = has_many: thumbnails
+
+  - Thumbnail:
+    + fields:
+      = name
+      = image_accessor
+    + relationships:
+      = belongs_to: video
 
   - Match:
     + fields:

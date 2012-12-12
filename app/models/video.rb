@@ -8,6 +8,7 @@ class Video
   field :view_count, type: Integer
 
   belongs_to :match
+  has_many :thumbnails
 
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME, password: YoutubeConfig::PASSWORD,
@@ -15,12 +16,21 @@ class Video
   end
 
   def self.search(params)
-    yt_session.videos_by(params)
+    query = yt_session.videos_by(params)
+    query.videos.each do |video|
+      v = save_video(video)
+      video.thumbnails.each do |thumbnail|
+        # binding.pry
+        t = Thumbnail.save_thumbnail(thumbnail)
+        v.thumbnails << t
+        v.save
+      end
+    end
   end
 
   def self.save_video(video)
     Video.find_or_create_by(
-        title: video.title,,
+        title: video.title,
         unique_id: video.unique_id,
         description: video.description,
         uploaded_at: video.uploaded_at,
