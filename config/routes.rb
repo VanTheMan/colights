@@ -1,5 +1,14 @@
 Colights::Application.routes.draw do
-  root :to => "#"
+  devise_for :users
+
+  root :to => "videos#index"
+
+
+  resources :users
+
+  resources :matchs do
+    resources :videos
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
