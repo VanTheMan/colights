@@ -208,6 +208,7 @@ DEPENDENCIES
   mongoid (~> 2.4)
   mongoid-cached-json
   mongoid_fulltext
+  nokogiri
   pry
   rack-cache
   rails (= 3.2.9)

@@ -1,5 +1,5 @@
 class MatchCrawler
-   def request_param(page)
+  def request_param(page)
     path = '/a/block_competition_matches?'
     callback_params = {
       page: (page==0 ? 0 : page.to_s),
@@ -53,6 +53,7 @@ class MatchCrawler
       }
 
       puts "Crawled match: #{time} | #{team_a} #{score} #{team_b}"
+      Match.save_match(match)
       results << match
     end
     results

@@ -11,6 +11,7 @@ gem 'attribute_normalizer'
 
 # craw
 gem 'faraday'
+gem 'nokogiri'
 
 gem 'kaminari'          # pagination
  # cron jobs

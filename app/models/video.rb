@@ -11,14 +11,22 @@ class Video
   has_many :thumbnails
 
   def self.yt_session
-    @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME, password: YoutubeConfig::PASSWORD,
+    @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME,
+                                          password: YoutubeConfig::PASSWORD,
                                           dev_key: YoutubeConfig::DEV_KEY)
   end
 
-  def self.search(params)
+  def self.search(params, match = nil)
     query = yt_session.videos_by(params)
     query.videos.each do |video|
       v = save_video(video)
+
+      if match
+        match.videos << v
+        match.save
+        puts match.team_a + " " + match.team_b
+      end
+
       video.thumbnails.each do |thumbnail|
         t = Thumbnail.save_thumbnail(thumbnail)
         v.thumbnails << t
