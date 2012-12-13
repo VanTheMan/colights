@@ -1,0 +1,29 @@
+<header class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "colights", root_path, class: 'brand' %>
+      <div class="nav-collapse collapse navbar-inverse-collapse">
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Browse
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Leagues</a></li>
+              <li><a href="#">Clubs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <form class="pull-left navbar-search">
+        <input type="text" class="input-large search-query">
+        <i class="icon-search"></i>
+      </form>
+      <ul class="nav pull-right">
+        <li><%= link_to "Log in", "#" %></li>
+        <li><%= link_to "Sign up", "#" %></li>
+      </ul>
+    </div>
+  </div>
+</header>

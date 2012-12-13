@@ -5,10 +5,33 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style type="text/css" media="screen">
+    .slides_container {
+      width:1200px;
+      height:445px;
+    }
+    .slides_container div {
+      width:1200px;
+      height:445px;
+      display:block;
+    }
+  </style>
+  <script>
+    $(function(){
+      $("#slides").slides({
+        preload: true,
+        preloadImage: '/assets/img/loading.gif',
+        play: 3000,
+        pause: 2500,
+        hoverPause: true
+      });
+    });
+  </script>
 </head>
 <body>
-
-<%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/slide' %>
+  <%= yield %>
 
 </body>
 </html>
