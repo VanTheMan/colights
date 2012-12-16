@@ -5,17 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <style type="text/css" media="screen">
-    .slides_container {
-      width:1200px;
-      height:445px;
-    }
-    .slides_container div {
-      width:1200px;
-      height:445px;
-      display:block;
-    }
-  </style>
+
   <script>
     $(function(){
       $("#slides").slides({
@@ -25,13 +15,17 @@
         pause: 2500,
         hoverPause: true
       });
+      $('#slides_two').slides({
+        generatePagination: false
+      });
     });
   </script>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <%= render 'layouts/slide' %>
-  <%= yield %>
+  <section class="container">
+    <%= yield %>
+  </section>
 
 </body>
 </html>

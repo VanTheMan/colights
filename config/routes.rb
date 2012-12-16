@@ -3,6 +3,8 @@ Colights::Application.routes.draw do
 
   root :to => "videos#index"
 
+  match '/search' => 'videos#search'
+
   resources :users
 
   resources :matchs do

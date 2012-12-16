@@ -6,6 +6,7 @@ gem 'rails', '3.2.9'
 gem 'mongoid', '~> 2.4'
 gem 'mongoid-cached-json'
 gem 'mongoid_fulltext'
+gem 'mongoid_search'
 gem 'bson_ext'
 gem 'attribute_normalizer'
 
