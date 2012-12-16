@@ -10,6 +10,7 @@ class Video
   field :view_count, type: Integer
 
   belongs_to :match
+  belongs_to :movie
   has_many :thumbnails
 
   fulltext_search_in :title, max_ngrams_to_search: 1000, max_candidate_set_size: 2000
@@ -21,19 +22,22 @@ class Video
                                           dev_key: YoutubeConfig::DEV_KEY)
   end
 
-  def self.search(params, match = nil)
+  def self.search(params, movie = nil)
     query = yt_session.videos_by(params)
     results = []
+
+    puts movie.title
+
     query.videos.each do |video|
       v = save_video(video)
       results << v
-      if match
-        match.videos << v
-        match.save
+      if movie
+        movie.videos << v
+        movie.save
       end
 
       video.thumbnails.each do |thumbnail|
-        t = Thumbnail.save_thumbnail(thumbnail)
+        t = Thumbnail.save_thumbnail(thumbnail) if thumbnail.name == "hqdefault"
         v.thumbnails << t
         v.save
       end

@@ -10,6 +10,12 @@ gem 'mongoid_search', '~> 0.2.x'
 gem 'bson_ext'
 gem 'attribute_normalizer'
 
+# solr
+gem 'sunspot'
+gem 'sunspot_mongoid', github: 'dnbrwstr/sunspot_mongoid'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 # craw
 gem 'faraday'
 gem 'nokogiri'
