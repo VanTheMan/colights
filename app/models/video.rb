@@ -9,6 +9,8 @@ class Video
   field :description, type: String
   field :uploaded_at, type: Date
   field :view_count, type: Integer
+  field :thumbnail_uid
+  image_accessor :thumbnail
 
   searchable do
     text :title
@@ -21,6 +23,10 @@ class Video
 
   fulltext_search_in :title, max_ngrams_to_search: 1000, max_candidate_set_size: 2000
   search_in :title
+
+  def thumb_url
+    "http://#{Settings.host}" + thumbnail.url
+  end
 
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME,
@@ -50,8 +56,7 @@ class Video
       end
 
       video.thumbnails.each do |thumbnail|
-        t = Thumbnail.save_thumbnail(thumbnail) if thumbnail.name == "hqdefault"
-        v.thumbnails << t
+        v.thumbnail_url = thumbnail.url if thumbnail.name == "hqdefault"
         v.save
       end
     end
