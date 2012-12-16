@@ -1,9 +1,50 @@
 class MatchCrawler
-  def request_param(page)
+  MATCH_IDS = {
+    "Premier League" => {
+      league_id: 17950,
+      start_page: -6
+    },
+    "Primera Division" => {
+      league_id: 18383,
+      start_page: -6
+    },
+    "UEFA Champions League" => {
+      league_id: 17916,
+      start_page: -4
+    }
+  }
+
+  def self.crawl_all
+    crawler = MatchCrawler.new
+    MATCH_IDS.each do |league, info|
+      puts "\nCrawling matches of #{league}"
+      crawler.crawl(info[:league_id], info[:start_page])
+    end
+  end
+
+  def crawl(league_id, from_page)
+    conn = Faraday.new(url: 'http://www.soccerway.com/') do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Adapter::NetHttp
+    end
+
+    result = {}
+
+    for i in from_page..0 do
+      response = conn.get request_param(league_id, i)
+      json = JSON.parse response.body
+      html = Nokogiri.HTML json["commands"][0]["parameters"]["content"]
+      result["page_#{i}"] = process_html(html)
+    end
+
+    return
+  end
+
+  def request_param(league_id, page)
     path = '/a/block_competition_matches?'
     callback_params = {
       page: (page==0 ? 0 : page.to_s),
-      round_id: 17950.to_s,
+      round_id: league_id.to_s,
       outgroup: "",
       view: 2
     }
@@ -15,24 +56,6 @@ class MatchCrawler
     }
 
     path + params.to_query
-  end
-
-  def crawl(page = -4)
-    conn = Faraday.new(url: 'http://www.soccerway.com/') do |c|
-      c.use Faraday::Request::UrlEncoded
-      c.use Faraday::Adapter::NetHttp
-    end
-
-    result = {}
-
-    for i in page..0 do
-      response = conn.get request_param(i)
-      json = JSON.parse response.body
-      html = Nokogiri.HTML json["commands"][0]["parameters"]["content"]
-      result["page_#{i}"] = process_html(html)
-    end
-
-    return
   end
 
   def process_html(html)
