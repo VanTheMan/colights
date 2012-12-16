@@ -17,9 +17,11 @@ class MatchCrawler
   def self.crawl_all
     crawler = MatchCrawler.new
     MATCH_IDS.each do |league, info|
-      puts "\nCrawling matches of #{league}"
+      puts "Crawling matches of #{league}"
       crawler.crawl(info[:league_id], info[:start_page])
     end
+
+    return
   end
 
   def crawl(league_id, from_page)
@@ -28,16 +30,17 @@ class MatchCrawler
       c.use Faraday::Adapter::NetHttp
     end
 
-    result = {}
+    result = []
 
     for i in from_page..0 do
       response = conn.get request_param(league_id, i)
       json = JSON.parse response.body
       html = Nokogiri.HTML json["commands"][0]["parameters"]["content"]
-      result["page_#{i}"] = process_html(html)
+      result << process_html(html)
     end
 
-    return
+    result.flatten!
+    puts "Crawled #{result.count} matches\n\n"
   end
 
   def request_param(league_id, page)
