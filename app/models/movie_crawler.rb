@@ -1,7 +1,18 @@
 require 'open-uri'
 
 class MovieCrawler
-  def crawl(year = Time.now.year)
+  def crawl(from_year = Time.now.year, gap = Time.now.year-from_year)
+    movies = []
+    for i in from_year..(from_year+gap) do
+      movies << process_year(i)
+    end
+
+    # movies.flatten!
+    # movies.sort! { |x, y| y[:gross] <=> x[:gross] }
+    # binding.pry
+  end
+
+  def process_year(year = Time.now.year)
     @crawl_year = year
     
     movies = []
@@ -11,7 +22,7 @@ class MovieCrawler
     end
 
     movies.flatten!
-    movies.count
+    movies
   end
 
   def process_page(page)
@@ -40,13 +51,14 @@ class MovieCrawler
     gross = html.css('td:nth-child(4) b').first.text.gsub(/[\$,]/, '').to_i
     
     attributes = {
-      rank: rank,
       title: title,
       year: @crawl_year,
       gross: gross,
       studio: studio
     }
 
-    puts "Crawled movie: #{rank} | #{title} (#{@crawl_year}) | $#{gross} | #{studio}"
+    puts "Crawled movie: #{title} (#{@crawl_year}) | $#{gross} | #{studio}"
+
+    attributes
   end
 end
