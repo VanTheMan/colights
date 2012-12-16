@@ -1,9 +1,9 @@
 desc "Crawl fixtures data and search videos"
 task :fetch_data => :environment do
-  MatchCrawler.new.crawl
-  Match.all.each do |m|
-    s = m.team_a + "vs" + m.team_b + m.score + " " + "all goals and highlights" + m.time.to_s + " "
-    param = { query: s }
+  MovieCrawler.new.crawl(2010, 2)
+  Movie.all.each do |m|
+    s = m.title + m.year.to_s + "official trailer"
+    param = { query: s, page: 1, per_page: 10 }
     Video.search(param, m)
   end
 end

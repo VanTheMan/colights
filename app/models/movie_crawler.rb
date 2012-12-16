@@ -14,7 +14,7 @@ class MovieCrawler
 
   def process_year(year = Time.now.year)
     @crawl_year = year
-    
+
     movies = []
 
     for i in 1..2 do
@@ -49,7 +49,7 @@ class MovieCrawler
     title = html.css('td:nth-child(2) a').first.text
     studio = html.css('td:nth-child(3) a').first[:href][/(?<=\?studio=)\w+(?=.htm)/]
     gross = html.css('td:nth-child(4) b').first.text.gsub(/[\$,]/, '').to_i
-    
+
     attributes = {
       title: title,
       year: @crawl_year,
@@ -59,6 +59,7 @@ class MovieCrawler
 
     puts "Crawled movie: #{title} (#{@crawl_year}) | $#{gross} | #{studio}"
 
+    Movie.find_or_create_by(attributes)
     attributes
   end
 end

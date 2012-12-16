@@ -25,6 +25,9 @@ class Video
   def self.search(params, movie = nil)
     query = yt_session.videos_by(params)
     results = []
+
+    puts movie.title
+
     query.videos.each do |video|
       v = save_video(video)
       results << v
@@ -34,7 +37,7 @@ class Video
       end
 
       video.thumbnails.each do |thumbnail|
-        t = Thumbnail.save_thumbnail(thumbnail)
+        t = Thumbnail.save_thumbnail(thumbnail) if thumbnail.name == "hqdefault"
         v.thumbnails << t
         v.save
       end
