@@ -6,10 +6,6 @@ class MovieCrawler
     for i in from_year..(from_year+gap) do
       movies << process_year(i)
     end
-
-    # movies.flatten!
-    # movies.sort! { |x, y| y[:gross] <=> x[:gross] }
-    # binding.pry
   end
 
   def process_year(year = Time.now.year)
