@@ -1,6 +1,7 @@
 class Video
   include Mongoid::Document
   include Mongoid::FullTextSearch
+  include Mongoid::Search
 
   field :title, type: String
   field :unique_id, type: String
@@ -11,7 +12,8 @@ class Video
   belongs_to :match
   has_many :thumbnails
 
-  fulltext_search_in :title, max_ngrams_to_search: 1000
+  fulltext_search_in :title, max_ngrams_to_search: 1000, max_candidate_set_size: 2000
+  search_in :title
 
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME,
@@ -21,9 +23,10 @@ class Video
 
   def self.search(params, match = nil)
     query = yt_session.videos_by(params)
+    results = []
     query.videos.each do |video|
       v = save_video(video)
-
+      results << v
       if match
         match.videos << v
         match.save
@@ -35,6 +38,7 @@ class Video
         v.save
       end
     end
+    results
   end
 
   def self.save_video(video)

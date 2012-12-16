@@ -1,2 +1,39 @@
-<h3>Search results</h3>
-<p><%= @results.count %></p>
+<div id="search-bar">
+  <h3>Search results for</h3>
+  <%= link_to "Advanced Search", "#", :class => "fancybox" %>
+  <div id="search-bar-divider"></div>
+</div>
+
+<div style="display:none">
+  <div id="inline">
+    <h2>Advance Search</h2>
+    <%= form_tag("/search", method: "post") do %>
+      <%= label_tag(:q, "Search for") %>
+      <%= text_field_tag(:q) %>
+      <%= label_tag(:published, "Uploaded at") %>
+      <%= select_tag(:published,
+                     options_for_select([["Today", 0], ["This week", 7], ["This month", 30]])) %>
+      <%= label_tag(:published, "Duration") %>
+      <%= select_tag(:duration,
+                     options_for_select([["Short", "short"], ["Medium", "medium"], ["Long", 'long']])) %>
+      <%= label_tag(:order_by, "Order by")%>
+      <%= select_tag(:order_by,
+                     options_for_select([["View Count", "viewCount"], ["Published", "published"],
+                                         ["Relevance", "relevance"], ["Rating","rating"]]))%>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="search-results">
+  <%= render @videos %>
+</div>
+
+<script type="text/javascript">
+  $("a.fancybox").fancybox({
+        'href'   : '#inline',
+        'titleShow'  : false,
+        'transitionIn'  : 'elastic',
+        'transitionOut' : 'elastic'
+  });
+</script>

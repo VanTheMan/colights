@@ -7,11 +7,12 @@ section {
 }
 
 section.container {
-  padding-top: 40px;
+  padding-top: 20px;
+  margin-top: 45px;
 }
 
 .container-inner{
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 textarea {
@@ -40,6 +41,12 @@ textarea {
   display:block;
 }
 
+#slide_img1 {
+  background: url("/assets/img/mu.jpg");
+  /*background-repeat: repeat-x;*/
+  background-size:cover;
+}
+
 /*
   Next/prev buttons
 */
@@ -63,7 +70,7 @@ textarea {
 
 #slides_two .next,#slides_two .prev {
   position:absolute;
-  top:1310px;
+  top:1270px;
   left:51px;
   display:block;
   z-index:101;
@@ -73,7 +80,7 @@ textarea {
 
 #slides .next,#slides .prev {
   position:absolute;
-  top:255px;
+  top:240px;
   left:51px;
   display:block;
   z-index:101;
@@ -117,4 +124,14 @@ textarea {
 
 #slides .pagination li.current a {
   background-position:0 -12px;
+}
+
+#search-bar-divider {
+  margin-right: 2px;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid white;
+}
+
+.search-results {
+  padding-top: 40px;
 }

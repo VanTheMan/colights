@@ -7,6 +7,8 @@ Colights::Application.routes.draw do
 
   resources :users
 
+  resources :videos
+
   resources :matchs do
     resources :videos
   end

@@ -44,7 +44,7 @@ class MatchCrawler
       time = Time.at timestamp
       team_a = tr.css('td.team-a > a').first[:title]
       team_b = tr.css('td.team-b > a').first[:title]
-      score = tr.css('td.score > a').first.text
+      score = tr.css('td.score > a').first.text if tr.css('td.score > a').first
       match = {
         time: time,
         team_a: team_a,

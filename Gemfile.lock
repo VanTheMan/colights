@@ -68,8 +68,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fancybox-rails (0.1.4)
+      railties (>= 3.1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
+    fast-stemmer (1.0.1)
     fssm (0.2.9)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -103,6 +106,10 @@ GEM
       mongoid
     mongoid_fulltext (0.5.8)
       unicode_utils (~> 1.0.0)
+    mongoid_search (0.2.8)
+      bson_ext (>= 1.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 2.0.0)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     nokogiri (1.5.5)
@@ -202,12 +209,14 @@ DEPENDENCIES
   compass-rails
   devise
   dragonfly (~> 0.9.12)
+  fancybox-rails
   faraday
   jquery-rails
   kaminari
   mongoid (~> 2.4)
   mongoid-cached-json
   mongoid_fulltext
+  mongoid_search (~> 0.2.x)
   nokogiri
   pry
   rack-cache
