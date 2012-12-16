@@ -10,7 +10,8 @@ class VideosController < ApplicationController
 
   def search
     if params.length == 3
-      @videos = Video.fulltext_search(params[:q])
+      @videos = Video.search_solr(params[:q])
+      # @videos = Video.fulltext_search(params[:q])
     else
       param_search = {
         query: params[:q],

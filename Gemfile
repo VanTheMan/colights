@@ -29,6 +29,8 @@ gem 'settingslogic'
 gem 'youtube_it'        # youtube gem
 
 gem 'devise'            # authentication
+gem 'rails_admin'
+gem 'cancan'
 
 # Gems used for upload images
 gem 'rack-cache', :require => 'rack/cache'

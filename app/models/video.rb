@@ -2,12 +2,18 @@ class Video
   include Mongoid::Document
   include Mongoid::FullTextSearch
   include Mongoid::Search
+  include Sunspot::Mongoid
 
   field :title, type: String
   field :unique_id, type: String
   field :description, type: String
   field :uploaded_at, type: Date
   field :view_count, type: Integer
+
+  searchable do
+    text :title
+    string :title
+  end
 
   belongs_to :match
   belongs_to :movie
@@ -20,6 +26,13 @@ class Video
     @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME,
                                           password: YoutubeConfig::PASSWORD,
                                           dev_key: YoutubeConfig::DEV_KEY)
+  end
+
+  def self.search_solr(text)
+    # binding.pry
+    Sunspot.search(Video) do
+      keywords text
+    end.results
   end
 
   def self.search(params, movie = nil)

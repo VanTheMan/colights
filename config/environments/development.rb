@@ -29,5 +29,7 @@ Colights::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  Sunspot.config.solr.url = 'http://localhost:8982/solr' #port must match with config/sunspot.yml
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

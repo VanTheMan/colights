@@ -29,6 +29,7 @@ Colights::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  Sunspot.config.solr.url = 'http://localhost:8983/solr' #port must match with config/sunspot.yml
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
