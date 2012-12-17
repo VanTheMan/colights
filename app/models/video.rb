@@ -1,7 +1,5 @@
 class Video
   include Mongoid::Document
-  include Mongoid::FullTextSearch
-  include Mongoid::Search
   include Sunspot::Mongoid
 
   field :title, type: String
@@ -20,9 +18,6 @@ class Video
   belongs_to :match
   belongs_to :movie
   has_many :thumbnails
-
-  fulltext_search_in :title, max_ngrams_to_search: 1000, max_candidate_set_size: 2000
-  search_in :title
 
   def thumb_url
     "http://#{Settings.host}" + thumbnail.url

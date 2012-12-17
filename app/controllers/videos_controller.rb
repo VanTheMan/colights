@@ -11,7 +11,7 @@ class VideosController < ApplicationController
   def search
     if params.length == 3
       @movies = Movie.search(params[:q])
-      binding.pry
+      # binding.pry
       @videos = @movies.each.map{ |m| m.videos }.flatten
       # @videos = Video.fulltext_search(params[:q])
     else

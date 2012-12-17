@@ -253,13 +253,13 @@ RailsAdmin.config do |config|
       configure :title, :string
       configure :unique_id, :text
       configure :description, :text
+      configure :thumbnail_uid, :string         # Hidden
+      configure :thumbnail, :dragonfly
       configure :uploaded_at, :date
       configure :view_count, :integer
       configure :match_id, :bson_object_id         # Hidden
       configure :movie_id, :bson_object_id         # Hidden
       configure :_keywords, :serialized
-      configure :thumbnail_uid, :string         # Hidden
-      configure :thumbnail, :dragonfly
 
   #   # Cross-section configuration:
 
@@ -276,9 +276,9 @@ RailsAdmin.config do |config|
         field :title
         field :unique_id
         field :description
+        field :thumbnail
         field :uploaded_at
         field :view_count
-        field :thumbnail
   #       # filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
   #       # items_per_page 100    # Override default_items_per_page
   #       # sort_by :id           # Sort column (default is primary key)
