@@ -6,6 +6,9 @@ class Movie
   field :year, type: Integer
   field :gross, type: Integer
   field :studio, type: String
+  field :genre, type: Array
+
+  scope :genre, ->(name) { where(genre: name) }
 
   has_many :videos
 

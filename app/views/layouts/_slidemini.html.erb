@@ -3,11 +3,11 @@
     <ul class="thumbnails">
       <% videos.slice(8*(i - 1), 8).each do |video| %>
         <li class="span3">
-          <a href="<%= video.youtube_url %>" class="youtube_link thumbnail">
-            <img src="<%= video.thumb_url %>">
-            <div class="video-caption">
-              <h5><%= video.movie.title %></h5>
-            </div>
+          <% title = video.movie.title + "(" + video.movie.year.to_s + ")"
+             description = video.description %>
+          <a href="<%= video.youtube_url %>" class="youtube_link thumbnail" >
+            <img src="<%= video.thumb_url %>" >
+            <span><%= video.movie.title %></span>
           </a>
         </li>
       <% end %>

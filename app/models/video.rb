@@ -9,9 +9,6 @@ class Video
   field :view_count, type: Integer
   field :thumbnail_uid
   image_accessor :thumbnail
-  field :genre, type: String
-
-  scope :genre, ->(name) { where(genre: name) }
 
   searchable do
     text :title
@@ -28,6 +25,10 @@ class Video
 
   def youtube_url
     "http://www.youtube.com/watch?v=" + self.unique_id
+  end
+
+  def get_title
+    title.length > 25 ? title.slice(0..24) + "..." : title
   end
 
   def self.yt_session

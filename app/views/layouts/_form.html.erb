@@ -1,0 +1,38 @@
+<%= form_tag("/search", method: "post", class: "form-horizontal") do %>
+  <fieldset>
+    <legend>Advance Search</legend>
+    <div class="control-group">
+      <%= label_tag(:q, "Search for", class: "control-label") %>
+      <div class="controls">
+        <%= text_field_tag(:q) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag(:published, "Uploaded at", class: "control-label") %>
+      <div class="controls">
+        <%= select_tag(:published,
+                       options_for_select([["Today", 0], ["This week", 7], ["This month", 30]])) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag(:published, "Duration", class: "control-label") %>
+      <div class="controls">
+        <%= select_tag(:duration,
+                       options_for_select([["Short", "short"], ["Medium", "medium"], ["Long", 'long']])) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag(:order_by, "Order by", class: "control-label")%>
+      <div class="controls">
+        <%= select_tag(:order_by,
+                       options_for_select([["View Count", "viewCount"], ["Published", "published"],
+                                           ["Relevance", "relevance"], ["Rating","rating"]]))%>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= submit_tag "Search",class: "btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>

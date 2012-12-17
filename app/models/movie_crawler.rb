@@ -45,17 +45,30 @@ class MovieCrawler
     title = html.css('td:nth-child(2) a').first.text
     studio = html.css('td:nth-child(3) a').first[:href][/(?<=\?studio=)\w+(?=.htm)/]
     gross = html.css('td:nth-child(4) b').first.text.gsub(/[\$,]/, '').to_i
+    genres = get_genre(title)
 
     attributes = {
       title: title,
       year: @crawl_year,
       gross: gross,
-      studio: studio
+      studio: studio,
+      genre: genres
     }
 
     puts "Crawled movie: #{title} (#{@crawl_year}) | $#{gross} | #{studio}"
 
     Movie.find_or_create_by(attributes)
     attributes
+  end
+
+  def get_genre(title)
+    conn = Faraday.new(url: 'http://imdbapi.org') do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Adapter::NetHttp
+    end
+
+    response = conn.get '/?',{ title: title, type: 'json'}
+    json = JSON.parse response.body
+    json[0]["genres"] unless json.include?("code")
   end
 end

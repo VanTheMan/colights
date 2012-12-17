@@ -93,6 +93,7 @@ RailsAdmin.config do |config|
       configure :year, :integer
       configure :gross, :integer
       configure :studio, :text
+      configure :genre, :string
 
   #   # Cross-section configuration:
 
@@ -108,6 +109,7 @@ RailsAdmin.config do |config|
       list do
         field :title
         field :year
+        field :genre
         field :gross
         field :studio
   #       # filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
@@ -118,6 +120,7 @@ RailsAdmin.config do |config|
       show do
         field :title
         field :year
+        field :genre
         field :gross
         field :studio
       end

@@ -11,11 +11,15 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.min
 //= require jquery_ujs
+//= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require fancybox
 //= require_tree .
 
 $(document).ready(function(){
+  $("#example").popover({ trigger: "hover" });
   $('#slides_five').slides({
     preload: true,
     preloadImage: '/assets/img/loading.gif',
@@ -62,4 +66,6 @@ $(document).ready(function(){
 
     return false;
   });
+
+  $(".hover_pop").popover();
 });
