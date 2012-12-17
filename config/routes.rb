@@ -12,9 +12,7 @@ Colights::Application.routes.draw do
 
   resources :videos
 
-  resources :matchs do
-    resources :videos
-  end
+  resources :movies
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

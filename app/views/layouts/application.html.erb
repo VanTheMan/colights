@@ -18,14 +18,20 @@
       $('#slides_two').slides({
         generatePagination: false
       });
+      $('#slides_four').slides({
+        preload: true,
+        preloadImage: '/assets/img/loading.gif',
+        play: 3000,
+        pause: 2500,
+        hoverPause: true,
+        generatePagination: false
+      });
     });
   </script>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <section class="container">
-    <%= yield %>
-  </section>
+  <%= yield %>
 
 </body>
 </html>

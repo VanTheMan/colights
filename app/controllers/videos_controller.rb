@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   def index
     @videos = Video.all.sample(1)
-    @top_videos = Video.desc(:view_count).limit(20)
+    @top_videos = Video.desc(:view_count).limit(25)
   end
 
   def show

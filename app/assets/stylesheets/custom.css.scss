@@ -8,11 +8,21 @@ section {
 
 section.container {
   padding-top: 20px;
-  margin-top: 45px;
 }
 
 .container-inner{
   padding-top: 40px;
+}
+
+.navbar-inner{
+  background: transparent;
+}
+
+.input-wrapper {
+  width: 212px;
+  height: 24px;
+  padding: 3px 0 4px 14px;
+  background: url("/assets/img/input.png") no-repeat 0 0px;
 }
 
 textarea {
@@ -20,38 +30,32 @@ textarea {
 }
 
 .slides_container {
-  width:940;
-  height:400px;
+  width:1200px;
+  height:450px;
 }
 
 .slides_container div {
+  width:1200px;
+  height:450px;
+  display:block;
+}
+
+#slides_four .slides_container {
+  width:940px;
+  height:400px;
+}
+
+#slides_four .slides_container div {
   width:940px;
   height:400px;
   display:block;
-}
-
-#slides_two .slides_container {
-  width:940px;
-  height:200px;
-}
-
-#slides_two .slides_container div {
-  width:940px;
-  height:200px;
-  display:block;
-}
-
-#slide_img1 {
-  background: url("/assets/img/mu.jpg");
-  /*background-repeat: repeat-x;*/
-  background-size:cover;
 }
 
 /*
   Next/prev buttons
 */
 
-#slides, #slides_two {
+#slides, #slides_two, #slides_four {
   .next{
     background: url("/assets/img/play_icon.png");
     background-repeat: no-repeat;
@@ -60,7 +64,7 @@ textarea {
 }
 
 
-#slides, #slides_two {
+#slides, #slides_two, #slides_four {
    .prev{
     background: url("/assets/img/play_icon.png");
     background-repeat: no-repeat;
@@ -80,7 +84,17 @@ textarea {
 
 #slides .next,#slides .prev {
   position:absolute;
-  top:240px;
+  top:220px;
+  left:51px;
+  display:block;
+  z-index:101;
+  height: 35px;
+  width: 20px;
+}
+
+#slides_four .next,#slides_four .prev {
+  position:absolute;
+  top:710px;
   left:51px;
   display:block;
   z-index:101;
@@ -92,7 +106,7 @@ textarea {
   left:1120px;
 }
 
-#slides .next {
+#slides .next, #slides_four .next {
   left:1120px;
 }
 
@@ -134,4 +148,17 @@ textarea {
 
 .search-results {
   padding-top: 40px;
+}
+
+.link_header{
+  font-weight: 200;
+  font-family: "Flama",Helvetica,Arial,Verdana,sans-serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  color: #999;
+}
+
+a:hover.link_header{
+  text-decoration: none;
+  color: #6A3;
 }

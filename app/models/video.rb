@@ -9,6 +9,9 @@ class Video
   field :view_count, type: Integer
   field :thumbnail_uid
   image_accessor :thumbnail
+  field :genre, type: String
+
+  scope :genre, ->(name) { where(genre: name) }
 
   searchable do
     text :title
@@ -20,7 +23,7 @@ class Video
   has_many :thumbnails
 
   def thumb_url
-    "http://#{Settings.host}" + thumbnail.url
+    thumbnail.nil? ? "http://placehold.it/220x124" : thumbnail.thumb('220x124#ne').url
   end
 
   def self.yt_session
@@ -29,42 +32,44 @@ class Video
                                           dev_key: YoutubeConfig::DEV_KEY)
   end
 
-  def self.search_solr(text)
-    # binding.pry
-    Sunspot.search(Video) do
-      keywords text
-    end.results
-  end
-
-  def self.search(params, movie = nil)
-    query = yt_session.videos_by(params)
-    results = []
-
-    puts movie.title
-
-    query.videos.each do |video|
-      v = save_video(video)
-      results << v
-      if movie
-        movie.videos << v
-        movie.save
-      end
-
-      video.thumbnails.each do |thumbnail|
-        v.thumbnail_url = thumbnail.url if thumbnail.name == "hqdefault"
-        v.save
-      end
+  class << self
+    def search_solr(text)
+      # binding.pry
+      Sunspot.search(Video) do
+        keywords text
+      end.results
     end
-    results
-  end
 
-  def self.save_video(video)
-    Video.find_or_create_by(
-        title: video.title,
-        unique_id: video.unique_id,
-        description: video.description,
-        uploaded_at: video.uploaded_at,
-        view_count: video.view_count
-    )
+    def search(params, movie = nil)
+      query = yt_session.videos_by(params)
+      results = []
+
+      puts movie.title
+
+      query.videos.each do |video|
+        v = save_video(video)
+        results << v
+        if movie
+          movie.videos << v
+          movie.save
+        end
+
+        video.thumbnails.each do |thumbnail|
+          v.thumbnail_url = thumbnail.url if thumbnail.name == "hqdefault"
+          v.save
+        end
+      end
+      results
+    end
+
+    def save_video(video)
+      Video.find_or_create_by(
+          title: video.title,
+          unique_id: video.unique_id,
+          description: video.description,
+          uploaded_at: video.uploaded_at,
+          view_count: video.view_count
+      )
+    end
   end
 end

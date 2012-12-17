@@ -86,7 +86,6 @@ GEM
       railties (>= 3.1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
-    fast-stemmer (1.0.1)
     font-awesome-sass-rails (2.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -133,12 +132,6 @@ GEM
       activesupport
       hpricot
       mongoid
-    mongoid_fulltext (0.5.8)
-      unicode_utils (~> 1.0.0)
-    mongoid_search (0.2.8)
-      bson_ext (>= 1.2)
-      fast-stemmer (~> 1.0.0)
-      mongoid (>= 2.0.0)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     nested_form (0.3.1)
@@ -248,7 +241,6 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.5)
-    unicode_utils (1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
     webrobots (0.0.13)
@@ -282,8 +274,6 @@ DEPENDENCIES
   mechanize
   mongoid (~> 2.4)
   mongoid-cached-json
-  mongoid_fulltext
-  mongoid_search (~> 0.2.x)
   nokogiri
   pry
   rack-cache

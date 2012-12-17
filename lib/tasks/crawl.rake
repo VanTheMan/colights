@@ -4,6 +4,6 @@ task :fetch_data => :environment do
   Movie.all.each do |m|
     s = m.title + m.year.to_s + "official trailer"
     param = { query: s, page: 1, per_page: 3 }
-    Video.search(param, m)
+    Video.search(param, m) unless m.crawled
   end
 end
