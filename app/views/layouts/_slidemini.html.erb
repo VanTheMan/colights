@@ -1,26 +1,9 @@
-<div>
-  <ul class="thumbnails">
-      <li class="span6">
-        <a href="#" class="thumbnail">
-          <img src="<%= videos.first.thumbnail.thumb('464x272#ne').url %>">
-        </a>
-      </li>
-      <% videos.slice(1, 4).each do |video| %>
-        <li class="span3">
-          <a href="#" class="thumbnail">
-            <img src="<%= video.thumb_url %>">
-          </a>
-        </li>
-      <% end %>
-    </ul>
-</div>
-
-<% for i in 1..3 do %>
+<% for i in 1..4 do %>
   <div>
     <ul class="thumbnails">
-      <% videos.slice(6 + 8*(i - 1) + 1, 8).each do |video| %>
+      <% videos.slice(8*(i - 1), 8).each do |video| %>
         <li class="span3">
-          <a href="#" class="thumbnail">
+          <a href="<%= video_path(video) %>" class="thumbnail">
             <img src="<%= video.thumb_url %>">
           </a>
         </li>

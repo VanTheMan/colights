@@ -1,4 +1,13 @@
-<% url = "http://www.youtube.com/embed/" + "#{@video.unique_id}"%>
-<iframe width="560" height="315"
-src=<%= url%>
-frameborder="0" allowfullscreen></iframe>
+<section class="container">
+  <div class="container-inner">
+    <% url = "http://www.youtube.com/embed/" + "#{@video.unique_id}"%>
+    <div class="video">
+      <h3><%= @video.title %></h3>
+      <iframe width="640" height="390" src=<%= url%> frameborder="0" allowfullscreen></iframe>
+      <div class="statistic">
+        <span><%= @video.view_count %></span>
+        <p><%= time_ago_in_words(@video.uploaded_at) %> ago </p>
+      </div>
+    </div>
+  </div>
+</section>

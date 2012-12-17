@@ -23,7 +23,7 @@ class Video
   has_many :thumbnails
 
   def thumb_url
-    thumbnail.nil? ? "http://placehold.it/220x124" : thumbnail.thumb('220x124#ne').url
+    thumbnail.nil? ? "http://lorempixel.com/220/124" : thumbnail.thumb('220x124#ne').url
   end
 
   def self.yt_session
