@@ -1,3 +1,4 @@
+require "omniauth-youtube"
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -8,6 +9,9 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+
+  config.omniauth :youtube, "261847884438.apps.googleusercontent.com", "pV4BHrWt6A4ylIKL6GHcZ-Qw",
+                           { access_type: "online", approval_prompt: "" }
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -125,7 +129,7 @@ Devise.setup do |config|
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
-  
+
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
 

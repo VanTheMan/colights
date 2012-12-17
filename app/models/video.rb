@@ -39,7 +39,6 @@ class Video
 
   class << self
     def search_solr(text)
-      # binding.pry
       Sunspot.search(Video) do
         keywords text
       end.results

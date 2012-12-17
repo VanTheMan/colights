@@ -2,7 +2,7 @@ Colights::Application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "videos#index"
 
@@ -10,7 +10,11 @@ Colights::Application.routes.draw do
 
   resources :users
 
-  resources :videos
+  resources :videos do
+    collection do
+      post 'upload'
+    end
+  end
 
   resources :movies
 

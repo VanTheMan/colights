@@ -3,6 +3,7 @@ class VideosController < ApplicationController
     @videos = Video.all.sample(1)
     @top_videos = Video.desc(:view_count).limit(25)
     @recent_videos = Video.all.sample(25)
+    # @action_videos = Movie.genre("Action").map{ |m| m.videos.first }.compact
   end
 
   def show
@@ -23,5 +24,19 @@ class VideosController < ApplicationController
       }
       @videos = Video.search(param_search)
     end
+  end
+
+  def upload
+    client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.access_token,
+                                         client_id: YoutubeConfig::CLIENT_ID,
+                                         client_secret: YoutubeConfig::CLIENT_SECRET,
+                                         dev_key: YoutubeConfig::DEV_KEY)
+
+    client.video_upload(
+      File.open(params[:video].tempfile),
+      title: params[:title],
+      description: params[:description]
+    )
+    redirect_to root_path
   end
 end

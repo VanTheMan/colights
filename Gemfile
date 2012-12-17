@@ -25,6 +25,8 @@ gem 'whenever', :require => false
 gem 'settingslogic'
 
 gem 'youtube_it'        # youtube gem
+gem 'omniauth'
+gem 'omniauth-youtube'
 
 gem 'devise'            # authentication
 gem 'rails_admin'

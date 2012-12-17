@@ -23,8 +23,13 @@
         <input type="text" class="input-large search-query" name="q">
       </form>
       <ul class="nav pull-right">
-        <li><%= link_to "Log in", "#" %></li>
-        <li><%= link_to "Sign up", "#" %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Upload Video", "#" %></li>
+          <li><%= current_user.name %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in with Youtube", user_omniauth_authorize_path(:youtube) %></li>
+        <% end %>
       </ul>
     </div>
   </div>
