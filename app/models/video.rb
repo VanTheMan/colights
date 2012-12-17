@@ -26,6 +26,10 @@ class Video
     thumbnail.nil? ? "http://lorempixel.com/220/124" : thumbnail.thumb('220x124#ne').url
   end
 
+  def youtube_url
+    "http://www.youtube.com/watch?v=" + self.unique_id
+  end
+
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(username: YoutubeConfig::USERNAME,
                                           password: YoutubeConfig::PASSWORD,

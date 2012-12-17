@@ -1,52 +1,21 @@
 <%= render 'layouts/slide' %>
 
-<section class="container">
-  <div class="container-inner">
-    <div id="slides_four">
-      <h3><%= link_to "Top 25 Trailers", "#", class: "link_header" %></h3>
-      <div class="slides_container">
-        <%= render 'layouts/slidetop', videos: @top_videos %>
-      </div>
-      <a href="#" class="prev"></a>
-      <a href="#" class="next"></a>
+<div class="container-inner">
+  <div id="slides_four">
+    <h3><%= link_to "Top 25 Trailers", "#", class: "link_header" %></h3>
+    <div class="slides_container">
+      <%= render 'layouts/slidetop', videos: @top_videos %>
     </div>
-
-    <div id="slides_five">
-      <h3><%= link_to "Recently Added", "#", class: "link_header" %></h3>
-      <div class="slides_container">
-        <%= render 'layouts/slidemini', videos: @recent_videos %>
-      </div>
-      <a href="#" class="prev"></a>
-      <a href="#" class="next"></a>
-    </div>
+    <a href="#" class="prev"></a>
+    <a href="#" class="next"></a>
   </div>
 
-</section>
-
-<div id="myCarousel" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="item">
-      <img src="http://lorempixel.com/1200/450">
-      <div class="carousel-caption">
-        <h4>First Caption</h4>
-      </div>
-      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  <div id="slides_five">
+    <h3><%= link_to "Recently Added", "#", class: "link_header" %></h3>
+    <div class="slides_container">
+      <%= render 'layouts/slidemini', videos: @recent_videos %>
     </div>
-    <div class="item">
-      <img src="http://lorempixel.com/1200/450">
-      <div class="carousel-caption">
-        <h4>First Caption</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://lorempixel.com/1200/450">
-      <div class="carousel-caption">
-        <h4>First Caption</h4>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      </div>
-    </div>
+    <a href="#" class="prev"></a>
+    <a href="#" class="next"></a>
   </div>
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>

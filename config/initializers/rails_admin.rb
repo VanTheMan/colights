@@ -259,7 +259,6 @@ RailsAdmin.config do |config|
       configure :view_count, :integer
       configure :match_id, :bson_object_id         # Hidden
       configure :movie_id, :bson_object_id         # Hidden
-      configure :_keywords, :serialized
 
   #   # Cross-section configuration:
 

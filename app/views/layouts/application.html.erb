@@ -6,43 +6,12 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <script>
-    $(function(){
-      $("#slides").slides({
-        preload: true,
-        preloadImage: '/assets/img/loading.gif',
-        play: 3000,
-        pause: 2500,
-        hoverPause: true
-      });
-      $('#slides_five').slides({
-        preload: true,
-        preloadImage: '/assets/img/loading.gif',
-        play: 3000,
-        pause: 2500,
-        hoverPause: true,
-        generatePagination: false
-      });
-      $('#slides_four').slides({
-        preload: true,
-        preloadImage: '/assets/img/loading.gif',
-        play: 30000,
-        pause: 25000,
-        hoverPause: true,
-        generatePagination: false
-      });
-      $("a.fancybox").fancybox({
-          'href'   : '#inline',
-          'titleShow'  : false,
-          'transitionIn'  : 'elastic',
-          'transitionOut' : 'elastic'
-      });
-    });
-  </script>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <%= yield %>
-
+  <section class="container">
+    <%= yield %>
+  </section>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
