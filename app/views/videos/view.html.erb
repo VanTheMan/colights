@@ -1,0 +1,14 @@
+<h2><%= @genre %> Movies</h2>
+
+<div id="search-bar-divider"></div>
+
+<ul class="thumbnails">
+  <% @videos.each do |video| %>
+    <li class="span3">
+      <a href="<%= video.youtube_url %>" class="youtube_link thumbnail">
+        <img src="<%= video.thumb_url %>">
+        <p><%= video.get_title %></p>
+      </a>
+    </li>
+  <% end %>
+</ul>

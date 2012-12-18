@@ -10,7 +10,7 @@
         <li class="span3">
           <a href="<%= video.youtube_url %>" class="thumbnail youtube_link">
             <img src="<%= video.thumb_url %>">
-            <span><%= video.movie.title %></span>
+            <span><%= video.movie.get_title %></span>
           </a>
         </li>
       <% end %>
@@ -24,7 +24,7 @@
         <li class="span3">
           <a href="<%= video.youtube_url %>" class="thumbnail youtube_link">
             <img src="<%= video.thumb_url %>">
-            <span><%= video.movie.title %></span>
+            <span><%= video.movie.get_title %></span>
           </a>
         </li>
       <% end %>

@@ -6,12 +6,8 @@ class VideosController < ApplicationController
     # @action_videos = Movie.genre("Action").map{ |m| m.videos.first }.compact
   end
 
-  def show
-    @video = Video.find(params[:id])
-
-  end
-
   def search
+    @query = params[:q]
     if params.length == 3
       @movies = Movie.search(params[:q])
       @videos = @movies.each.map{ |m| m.videos }.flatten
@@ -38,5 +34,10 @@ class VideosController < ApplicationController
       description: params[:description]
     )
     redirect_to root_path
+  end
+
+  def view
+    @videos = Movie.genre(params["genre"]).map{ |m| m.videos.first }.compact
+    @genre = params["genre"]
   end
 end

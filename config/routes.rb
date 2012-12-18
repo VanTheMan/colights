@@ -13,6 +13,7 @@ Colights::Application.routes.draw do
   resources :videos do
     collection do
       post 'upload'
+      get 'view'
     end
   end
 

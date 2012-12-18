@@ -17,6 +17,10 @@ class Movie
     string :title
   end
 
+  def get_title
+    title.length > 25 ? title.slice(0..24) + "..." : title
+  end
+
   def self.search(text)
     Sunspot.search(Movie) do
       keywords text

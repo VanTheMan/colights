@@ -35,7 +35,6 @@ class User
   # field :authentication_token, :type => String
 
   def self.find_for_youtube(auth, signed_in_resource=nil)
-    binding.pry
     data = auth.info
     credentials = auth.credentials
     user = User.where(:email => data["email"]).first

@@ -10,11 +10,11 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Documentary</a></li>
-              <li><a href="#">Adventure</a></li>
-              <li><a href="#">Family</a></li>
-              <li><a href="#">Sport</a></li>
+              <li><%= link_to "Action", view_videos_path(:genre => "Action") %></li>
+              <li><%= link_to "Documentary", view_videos_path(:genre => "Documentary") %></li>
+              <li><%= link_to "Adventure", view_videos_path(:genre => "Adventure") %></li>
+              <li><%= link_to "Family", view_videos_path(:genre => "Family") %></li>
+              <li><%= link_to "Sport", view_videos_path(:genre => "Sport") %></li>
             </ul>
           </li>
         </ul>
@@ -24,7 +24,7 @@
       </form>
       <ul class="nav pull-right">
         <% if user_signed_in? %>
-          <li><%= link_to "Upload Video", "#" %></li>
+          <li><%= link_to "Upload Video", "#", class: "fancybox" %></li>
           <li><%= current_user.name %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% else %>

@@ -7,7 +7,7 @@
              description = video.description %>
           <a href="<%= video.youtube_url %>" class="youtube_link thumbnail" >
             <img src="<%= video.thumb_url %>" >
-            <span><%= video.movie.title %></span>
+            <span><%= video.movie.get_title %></span>
           </a>
         </li>
       <% end %>
